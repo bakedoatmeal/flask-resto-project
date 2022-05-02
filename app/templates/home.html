@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Our fave spots!</h1>
+
+<p>Share food recommendations with your friends!</p>
+
+<h2>All Restos</h2>
+
+{% for resto in restos %}
+<div class="resto">
+  <a href="/resto/{{resto.id}}">{{ resto.name }}</a>
+  <p>Address: {{ resto.address }} </p>
+</div>
+{% endfor %}
+
+{% endblock %}
