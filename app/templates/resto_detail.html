@@ -6,6 +6,10 @@
 <strong>Address:</strong> {{ resto.address }}
 <h2>Items</h2>
 
+<form action="/favorite/{{ resto.id }}" method="POST">
+  <input type="submit" value="Favorite">
+</form>
+
 
 <h2>Edit resto</h2>
 
