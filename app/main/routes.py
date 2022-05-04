@@ -1,7 +1,9 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
+import flask_login
 from app.main.forms import RestoForm
 from app.models import Resto, User, MenuItem
 from app.extensions import app, db
+from flask_login import login_user, logout_user, login_required, current_user
 
 main = Blueprint('main', __name__)
 
@@ -12,13 +14,15 @@ def index():
   return render_template('home.html', restos = restos)
 
 @main.route('/new_resto', methods=['GET', 'POST'])
+@login_required
 def new_resto():
   form = RestoForm()
 
   if form.validate_on_submit():
     resto = Resto(
       name = form.name.data,
-      address = form.address.data
+      address = form.address.data,
+      created_by = flask_login.current_user
     )
     db.session.add(resto)
     db.session.commit()
