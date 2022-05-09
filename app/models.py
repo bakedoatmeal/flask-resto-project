@@ -23,6 +23,7 @@ class Resto(db.Model):
     created_by = db.relationship('User')
     category = db.Column(db.Enum(ItemCategory), default=ItemCategory.OTHER)
     favorited_by = db.relationship('User', secondary='user_resto', back_populates='favorites')
+    reviews = db.relationship('Review', back_populates='resto')
 
 class MenuItem(db.Model):
     """Grocery Item model."""
@@ -41,9 +42,24 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(80), nullable=False)
     favorites = db.relationship('Resto', secondary='user_resto', back_populates='favorited_by')
+    # followed_by = db.relationship('User', foreign_keys=[follower_id], secondary='follower_following', back_populates='following')
+    # following = db.relationship('User', foreing_keys=[following_id], secondary='follower_following', back_populates='followed_by')
+    reviews = db.relationship('Review', back_populates='reviewer')
 
+class Review(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    reviewer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    reviewer = db.relationship('User', back_populates='reviews')
+    resto_id = db.Column(db.Integer, db.ForeignKey('resto.id'), nullable=False)
+    resto = db.relationship('Resto', back_populates='reviews')
+    comment = db.Column(db.String(200), nullable=True)
 
 user_resto = db.Table('user_resto',
     db.Column('resto_id', db.Integer, db.ForeignKey('resto.id')),
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
 )
+
+# follower_following = db.Table('follower_following', 
+#   db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+#   db.Column('following_id', db.Integer, db.ForeignKey('user.id'))
+# )

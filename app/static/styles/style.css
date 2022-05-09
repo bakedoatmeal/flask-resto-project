@@ -1,0 +1,31 @@
+/* Add styles here. */
+
+body {
+  margin: auto;
+  background-color: #FEFAE0;
+}
+
+nav {
+  display: flex;
+  padding-left: 10px;
+  padding-top: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: #D4A373;
+  width: 100vw;
+}
+
+.nav-links {
+  justify-self: flex-end;
+}
+
+.content {
+  padding: 20px;
+  margin: 50px;
+  min-height: 80vh;
+  background-color: #E9EDC9;
+  border-radius: 10px;
+  color: #7a4c1e;
+}

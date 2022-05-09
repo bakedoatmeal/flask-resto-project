@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>User Details</h1>
+
+<p>{{user.username}}'s fave restos!</p>
+
+<div class="restos">
+  {% for resto in user.favorites %}
+  <div class="resto-details">
+      <a href="/resto/{{ resto.id }}">
+      <p><strong>{{ resto.name }}</strong></p></a>
+      <p><strong>Address:</strong> {{ resto.address }}</p>
+      <p><strong>Category:</strong> {{resto.category}}</p>
+      <p>Created by: {{ resto.created_by.username }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

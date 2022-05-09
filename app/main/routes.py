@@ -13,6 +13,16 @@ def index():
   restos = Resto.query.all()
   return render_template('home.html', restos = restos)
 
+@main.route('/users')
+def users():
+  users = User.query.all()
+  return render_template('users.html', users=users)
+
+@main.route('/user/<user_id>')
+def user_details(user_id):
+  user = User.query.get(user_id)
+  return render_template('user_detail.html', user=user)
+
 @main.route('/favorite/<resto_id>', methods=['POST'])
 @login_required
 def favorite(resto_id):
@@ -48,7 +58,7 @@ def new_resto():
     flash('Resto added!')
     return redirect(url_for('main.index'))
 
-  return redirect(url_for('main.resto_detail', resto_id=resto_id))
+  return render_template('new_resto.html', form=form)
  
 @main.route('/resto/<resto_id>', methods=['GET', 'POST'])
 def resto_detail(resto_id):
