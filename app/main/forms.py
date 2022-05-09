@@ -1,6 +1,6 @@
 # Create your forms here.from flask_wtf import FlaskForm
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, DateField, SelectField, SubmitField, FloatField
+from wtforms import StringField, PasswordField, DateField, TextAreaField, SelectField, SubmitField, FloatField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Length, URL, ValidationError
 from app.models import User, Resto, MenuItem, ItemCategory
@@ -13,3 +13,7 @@ class RestoForm(FlaskForm):
 
 def get_restos():
   return Resto.query
+
+class CommentForm(FlaskForm):
+  """Form for adding a comment"""
+  comment = TextAreaField('Comment', validators=[DataRequired()])

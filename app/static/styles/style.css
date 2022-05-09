@@ -29,3 +29,15 @@ a {
   border-radius: 10px;
   color: #7a4c1e;
 }
+
+.resto {
+  padding: 20px;
+  margin: 20px;
+  background-color: #FEFAE0;
+  border-radius: 10px;
+  color: #7a4c1e;
+}
+
+form {
+  margin: 20px;
+}

@@ -5,7 +5,7 @@
 
 <div class="restos">
   {% for resto in user.favorites %}
-  <div class="resto-details">
+  <div class="resto">
       <a href="/resto/{{ resto.id }}">
       <p><strong>{{ resto.name }}</strong></p></a>
       <p><strong>Address:</strong> {{ resto.address }}</p>

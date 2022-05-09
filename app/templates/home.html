@@ -10,7 +10,8 @@
 {% for resto in restos %}
 <div class="resto">
   <a href="/resto/{{resto.id}}">{{ resto.name }}</a>
-  <p>Address: {{ resto.address }} </p>
+  <p>Category: {{ resto.category }}</p>
+  <p>City/Address: {{ resto.address }} </p>
 </div>
 {% endfor %}
 

@@ -3,11 +3,30 @@
 
 <h1>resto - {{ resto.name }}</h1>
 
+<p><strong>Category:</strong> {{ resto.category }}</p>
 <strong>Address:</strong> {{ resto.address }}
-<h2>Items</h2>
 
 <form action="/favorite/{{ resto.id }}" method="POST">
   <input type="submit" value="Favorite">
+</form>
+
+<div> 
+  <h2>Reviews</h2>
+  {% for review in resto.reviews %}
+   <div class="resto">
+     <a href="/user/{{review.reviewer.id}}">{{ review.reviewer.username }}</a>
+     <p> {{ review.comment }}</p>
+   </div>
+  {% endfor %}
+</div>
+
+<form method="POST">
+  <fieldset>
+    <legend>Leave a review:</legend>
+    {{ comment_form.csrf_token }}
+    {{ comment_form.comment.label }} {{ comment_form.comment }}
+    <input type="submit" value="Submit">
+  </fieldset>
 </form>
 
 
@@ -15,10 +34,11 @@
 
 <form method="POST">
     <fieldset>
-        <legend>Please enter your information:</legend>
+        <legend>Edit resto:</legend>
 
         {{ form.csrf_token }}
         {{ form.name.label }} {{ form.name(size=20) }}
+        {{ form.category.label }} {{ form.category(size=20) }}
         {{ form.address.label }} {{ form.address(size=20) }}
 
         <input type="submit" value="Submit">
