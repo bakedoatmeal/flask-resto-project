@@ -19,11 +19,16 @@ a {
 
 .nav-links {
   justify-self: flex-end;
+  width: 450px;
+}
+
+.nav-links > a {
+  margin: 5px;
 }
 
 .content {
   padding: 20px;
-  margin: 50px;
+  margin: 10px 50px 50px 50px;
   min-height: 80vh;
   background-color: #E9EDC9;
   border-radius: 10px;
@@ -40,4 +45,24 @@ a {
 
 form {
   margin: 20px;
+}
+
+.logo {
+  width: 150px;
+}
+
+.btn {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px #7a4c1e solid;
+  background-color:#FEFAE0;
+  color: #7a4c1e;
+}
+
+.resto-header {
+  display: flex;
+}
+
+.resto-header > p {
+  width: 50px;
 }

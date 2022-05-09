@@ -3,13 +3,16 @@
 
 <h1>Our fave spots!</h1>
 
-<p>Share food recommendations with your friends!</p>
+<p>Share food recommendations with your friends</p>
 
 <h2>All Restos</h2>
 
 {% for resto in restos %}
 <div class="resto">
-  <a href="/resto/{{resto.id}}">{{ resto.name }}</a>
+  <div class="resto-header">
+    <a href="/resto/{{resto.id}}">{{ resto.name }}</a>
+    <p>{{resto.favorited_by|length}} ❤️</p>
+  </div>
   <p>Category: {{ resto.category }}</p>
   <p>City/Address: {{ resto.address }} </p>
 </div>
